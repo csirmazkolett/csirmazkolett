@@ -1,35 +1,47 @@
-function paralleogramTerulet1(oldal, magassag) {
-    if (isNaN(oldal) || oldal <= 0 || isNaN(magassag) || magassag <= 0) {
-        throw new Error('Hibás adatok!');
+function szoras(termekek) {
+    if (termekek.length === 0) {
+        throw new Error('Nem adtál meg termékeket');
     }
-    return oldal * magassag;
+    var atl = atlag(termekek);
+    return Math.sqrt(termekek.map(function (x) { return Math.pow((x.ar - atl), 2); }).reduce(function (a, b) { return a + b; }) / termekek.length);
 }
-function paralleogramTerulet2(oldal1, oldal2, szog) {
-    if (isNaN(oldal1) || oldal1 <= 0 || isNaN(oldal2) || oldal2 <= 0 || isNaN(szog) || szog <= 0 || szog >= 180) {
-        throw new Error('Hibás adatok!');
+function atlag(termekek) {
+    if (termekek.length === 0) {
+        throw new Error('Nem adtál meg termékeket');
     }
-    return oldal1 * oldal2 * Math.sin((szog * Math.PI) / 180);
+    var osszeg = 0;
+    for (var i = 0; i < termekek.length; i++) {
+        osszeg += termekek[i].ar;
+    }
+    return osszeg / termekek.length;
 }
-function szamol1() {
-    var oldal = Number(document.getElementById('oldal').value);
-    var magassag = Number(document.getElementById('magassag').value);
-    try {
-        var terulet = paralleogramTerulet1(oldal, magassag);
-        document.getElementById('terulet1').textContent = terulet.toString();
+function legolcsobb(termekek) {
+    if (termekek.length === 0) {
+        throw new Error('Nem adtál meg termékeket');
     }
-    catch (error) {
-        alert(error);
+    var legolcsobb = termekek[0];
+    for (var i = 0; i < termekek.length; i++) {
+        if (termekek[i].ar <= legolcsobb.ar) {
+            legolcsobb = termekek[i];
+        }
     }
+    return legolcsobb;
 }
-function szamol2() {
-    var oldal1 = Number(document.getElementById('oldal1').value);
-    var oldal2 = Number(document.getElementById('oldal2').value);
-    var szog = Number(document.getElementById('szog').value);
-    try {
-        var terulet = paralleogramTerulet2(oldal1, oldal2, szog);
-        document.getElementById('terulet2').textContent = terulet.toString();
+function ujSor() {
+    var tabla = document.getElementById('termekek');
+    var sor = document.createElement('tr');
+    sor.innerHTML = '<td><input class="nev-input" /></td> <td><input class="ar-input" type="number" /></td>';
+    tabla.appendChild(sor);
+}
+function szamol() {
+    var sorok = document.getElementById('termekek').children;
+    var termekek = [];
+    for (var i = 0; i < sorok.length; i++) {
+        var nev = sorok[i].querySelector('.nev-input').value;
+        var ar = Number(sorok[i].querySelector('.ar-input').value);
+        termekek.push({ nev: nev, ar: ar });
     }
-    catch (error) {
-        alert(error);
-    }
+    document.getElementById('atlag').textContent = atlag(termekek).toFixed(2).toString();
+    document.getElementById('szoras').textContent = szoras(termekek).toFixed(2).toString();
+    document.getElementById('legolcsobb').textContent = legolcsobb(termekek).nev;
 }

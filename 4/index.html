@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=dev ice-width, initial-scale=1" />
+        <title>4. feladat</title>
+        <link type="text/css" href="styles/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="bal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Termék neve</th>
+                            <th>Termék ára</th>
+                        </tr>
+                    </thead>
+                    <tbody id="termekek">
+                        <tr>
+                            <td><input class="nev-input" value="Termék 1" /></td>
+                            <td><input class="ar-input" type="number" value="1" /></td>
+                        </tr>
+                        <tr>
+                            <td><input class="nev-input" value="Termék 2" /></td>
+                            <td><input class="ar-input" type="number" value="2" /></td>
+                        </tr>
+                        <tr>
+                            <td><input class="nev-input" value="Termék 3" /></td>
+                            <td><input class="ar-input" type="number" value="3" /></td>
+                        </tr>
+                        <tr>
+                            <td><input class="nev-input" value="Termék 4" /></td>
+                            <td><input class="ar-input" type="number" value="4" /></td>
+                        </tr>
+                        <tr>
+                            <td><input class="nev-input" value="Termék 5" /></td>
+                            <td><input class="ar-input" type="number" value="5" /></td>
+                        </tr>
+                        <tr>
+                            <td><input class="nev-input" value="Termék 6 " /></td>
+                            <td><input class="ar-input" type="number" value="6" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button onclick="ujSor()" id="uj-sor">Sor hozzáadása</button>
+            </div>
+            <div class="jobb">
+                <div>Átlag:<span id="atlag"></span></div>
+                <div>Szórás:<span id="szoras"></span></div>
+                <div>Legolcsóbb:<span id="legolcsobb"></span></div>
+                <button onclick="szamol()" id="szamol">Számol</button>
+            </div>
+        </div>
+        <script src="scripts/script.js" type="text/javascript" defer></script>
+    </body>
+</html>

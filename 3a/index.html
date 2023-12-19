@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=dev ice-width, initial-scale=1" />
+        <title>3a feladat</title>
+    </head>
+    <body>
+        <div>
+            <h1>Paralelogramma területének kiszámítása egy oldal és a maqgasság segítségével</h1>
+            <div class="container">
+                Oldal: <input type="number" name="oldal" id="oldal" value="10" min="1" /> Magasság:
+                <input type="number" name="magassag" id="magassag" value="10" min="1" />
+                <button onclick="szamol1()">Számol</button>
+                <div id="terulet1"></div>
+            </div>
+        </div>
+        <div>
+            <h1>Paralelogramma területének kiszámítása a két oldal és a szögük segítségével</h1>
+            <div class="container">
+                Oldal 1 <input type="number" name="oldal1" id="oldal1" value="10" min="1" /> Oldal 2
+                <input type="number" name="oldal2" id="oldal2" value="10" min="1" /> Szög
+                <input type="number" name="szog" id="szog" value="45" min="1" max="179" />
+                <button onclick="szamol2()">Számol</button>
+                <div id="terulet2"></div>
+            </div>
+        </div>
+        <script src="scripts/script.js" type="text/javascript" defer></script>
+    </body>
+</html>
